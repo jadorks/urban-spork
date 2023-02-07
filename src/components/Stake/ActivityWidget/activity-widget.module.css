@@ -1,0 +1,30 @@
+.container {
+  @apply w-full rounded-[18px] bg-[#130E19] px-8 py-4;
+  box-shadow: 0px 0px 0px 1px #1c1523;
+}
+
+.content {
+  @apply flex flex-col gap-3;
+}
+
+.content_header h2 {
+  @apply inter-med-16 text-[#E4E4E5];
+}
+
+.content_body {
+  @apply grid grid-cols-1 gap-4 md:gap-0 md:grid-cols-3 items-start;
+}
+
+.content_body div {
+  @apply flex flex-col md:gap-1;
+}
+
+.content_body h3 {
+  @apply text-[#99959C] lato-14;
+}
+.conversion {
+  @apply lato-12 text-[#B98DF6];
+}
+.content_body p {
+  @apply inter-med-18;
+}

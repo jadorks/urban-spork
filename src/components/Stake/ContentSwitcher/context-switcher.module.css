@@ -1,0 +1,18 @@
+.container {
+  @apply  w-full rounded-[18px] bg-[#1B1423] px-1 py-1;
+}
+
+.content {
+  @apply grid grid-cols-1 md:grid-cols-3 items-center;
+}
+
+.content button {
+  @apply w-full py-2 pl-3 md:pl-0;
+  @apply flex md:justify-center justify-start;
+  @apply rounded-2xl;
+  @apply text-[#E0CBFE] freude-18;
+}
+
+.content button.active {
+  @apply bg-[#F762DA] border-2 border-[#D33BE9];
+}

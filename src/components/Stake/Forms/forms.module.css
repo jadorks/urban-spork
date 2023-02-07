@@ -1,0 +1,40 @@
+.container {
+  @apply w-full rounded-3xl bg-[#130E19] px-4 py-4;
+  box-shadow: 0px 0px 0px 1px #1c1523;
+  @apply bg-[#130E19];
+}
+
+.content {
+  @apply flex flex-col gap-4;
+}
+
+.form {
+  @apply rounded-3xl px-8 py-6 bg-[#1C1523];
+}
+
+.currency {
+  @apply flex items-center px-3 py-1 gap-2 rounded-3xl bg-[#f762da01] border-[2px] border-[#F762DA];
+  width: fit-content;
+}
+
+.currency p {
+  @apply freude-18 text-[#F762DA];
+}
+
+.form_input {
+  @apply mt-6 mb-4 w-full bg-transparent;
+  @apply lato-36 outline-none;
+}
+
+.balance {
+  @apply flex justify-between lato-15;
+}
+
+.disclaimer {
+  @apply flex rounded-3xl px-8 py-4 bg-[#1C1523] items-center gap-2 lato-14;
+}
+
+.button {
+  @apply py-2 freude-22 rounded-2xl;
+  @apply bg-[#38137F] border-[2px] border-[#F762DA];
+}

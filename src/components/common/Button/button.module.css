@@ -1,0 +1,54 @@
+.button {
+    /* @apply flex items-center justify-center; */
+    /* @apply w-40; */
+  }
+  
+  .button__bg {
+  }
+  
+  .button__border {
+  }
+  
+  .button__center {
+    @apply flex items-center justify-center origin-center;
+  }
+  
+  .button__text {
+    @apply fill-white origin-center freude-18;
+    dominant-baseline: middle;
+    text-anchor: middle;
+  }
+  
+  [data-type="secondary"] .button__text {
+    @apply fill-white;
+  }
+  
+  [data-type="secondary"] .button__center {
+    @apply fill-transparent;
+  }
+  
+  .button:hover .button__center {
+    transform: scaleX(0.97) scaleY(0.9);
+  }
+  
+  .button:hover .button__text {
+    transform: scale(0.9);
+  }
+  
+  /* [disabled] .button__border {
+    @apply stroke-white;
+  } */
+  
+  .button:hover[disabled] .button__text,
+  [dsiabled]:hover .button__center {
+    @apply transform-none;
+  }
+  
+  [disabled] .button__text {
+    @apply fill-white;
+  }
+  
+  [disabled] .button__center {
+    @apply fill-transparent;
+  }
+  

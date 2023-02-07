@@ -1,0 +1,29 @@
+.container {
+  @apply px-4 lg:px-28 py-8;
+}
+
+.content {
+  @apply grid grid-cols-2 lg:grid-cols-3 justify-center items-center;
+}
+
+.nav__links {
+  @apply hidden lg:flex justify-between  items-center;
+  @apply freude-22 text-white;
+}
+
+.nav__right {
+  @apply hidden lg:block justify-self-end;
+}
+
+.button {
+  @apply lg:w-[220px] w-[14rem];
+}
+
+.connect_btn {
+  @apply rounded-3xl bg-white px-10 py-2;
+  @apply text-[#B202D1] uppercase;
+}
+
+.mobile__menu {
+  @apply block lg:hidden justify-self-end;
+}

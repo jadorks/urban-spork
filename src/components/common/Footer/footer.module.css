@@ -1,0 +1,26 @@
+.container {
+  margin-top: auto;
+  box-shadow: 0px -1px 0px rgba(255, 255, 255, 0.25);
+  @apply w-full bg-[#080013];
+}
+.footer_left {
+  @apply flex items-center justify-center;
+}
+
+.content {
+  @apply flex justify-between lg:flex-row flex-col lg:mb-0 mt-3 mb-6 lg:px-32;
+}
+
+.footer_center {
+  @apply flex justify-center gap-1 items-center lg:ml-10;
+}
+
+.footer_right {
+  @apply flex justify-center items-center;
+}
+
+.footer_right,
+.footer_center {
+  @apply lg:my-8 my-4;
+}
+
