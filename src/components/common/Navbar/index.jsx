@@ -59,8 +59,11 @@ export default function Navbar() {
               </Popover.Button>
               <Popover.Panel className="absolute z-10 w-screen px-4 mt-3 left-0 right-0 ">
                 <div className="overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5">
-                  <div className="relative grid gap-4 bg-transparent p-4">
-                    <div className="flex text-white items-center flex-col gap-4">
+                  <div className="relative grid gap-4 bg-[#38137f] p-4">
+                    <div className="flex freude-18 text-white items-center flex-col gap-4">
+                      <Link href={"/stake"}>Stake</Link>
+                      <Link href={"/stake"}>Farms</Link>
+                      <Link href={"/stake"}>Dewormer</Link>
                       <Button
                         onClick={openModal}
                         buttonAs="button"

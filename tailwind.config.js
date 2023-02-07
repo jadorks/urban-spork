@@ -109,6 +109,11 @@ module.exports = {
           fontStyle: "normal",
           fontSize: "15px",
         },
+        ".lato-16": {
+          fontFamily: theme("fontFamily.lato-reg"),
+          fontStyle: "normal",
+          fontSize: "16px",
+        },
         ".lato-18": {
           fontFamily: theme("fontFamily.lato-reg"),
           fontStyle: "normal",

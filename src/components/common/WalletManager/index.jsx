@@ -2,9 +2,13 @@ import React, { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import style from "./wallet-manager.module.css";
 import MetaMask from "@/assets/images/metamask.png";
+import MetaMaskLoading from "@/assets/images/metamask_loading.gif";
 import WalletConnect from "@/assets/images/walletConnect.svg";
+import WalletConnectLoading from "@/assets/images/walletconnect_loading.gif";
 import Coinbase from "@/assets/images/coinbase.svg";
+import CoinbaseLoading from "@/assets/images/coinbase_loading.gif";
 import CopySymbol from "@/assets/images/copy.svg";
+import ExitSymbol from "@/assets/icons/exit.svg";
 import ExternalLink from "@/assets/images/external-link.svg";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { useEthers, shortenIfAddress } from "@usedapp/core";
@@ -16,16 +20,19 @@ const providers = [
     options: { type: "metamask" },
     displayName: "MetaMask",
     icon: MetaMask.src,
+    loader: MetaMaskLoading.src,
   },
   {
     options: { type: "coinbase" },
     displayName: "Coinbase Wallet",
     icon: Coinbase.src,
+    loader: CoinbaseLoading.src,
   },
   {
     options: { type: "walletConnect" },
     displayName: "WalletConnect",
     icon: WalletConnect.src,
+    loader: WalletConnectLoading.src,
   },
 ];
 
@@ -107,35 +114,41 @@ function WalletManager({ isOpen, onCloseModal }) {
                         as="h3"
                         className={style.wallet_dialog_title}
                       >
-                        Select a wallet
+                        Connect your wallet
                       </Dialog.Title>
                       <span
                         onClick={onCloseModal}
                         className={style.wallet_dialog_close}
                       >
-                        &times;
+                        <img src={ExitSymbol.src} className="w-6" alt="" />
                       </span>
                     </div>
                   </div>
 
                   <div className={style.wallet_dialog_providers}>
                     <ul className={style.wallet_dialog_providers_list}>
-                      {providers.map(({ options, displayName, icon }, key) => (
-                        <li key={key}>
-                          <button
-                            disabled={isLoading}
-                            onClick={() => handleConnectWallet(options, key)}
-                          >
-                            <Image src={icon} width={34} height={34} alt="Wallet icons"/>
-                            <span>{displayName}</span>
-                            {isLoading && key == selectedKey && (
-                              <span>
-                                <img src={Spinner.src} alt="" />
-                              </span>
-                            )}
-                          </button>
-                        </li>
-                      ))}
+                      {providers.map(
+                        ({ options, displayName, icon, loader }, key) => (
+                          <li key={key}>
+                            <button
+                              disabled={isLoading}
+                              onClick={() => handleConnectWallet(options, key)}
+                            >
+                              <span>{displayName}</span>
+                              <Image
+                                src={
+                                  isLoading && key == selectedKey
+                                    ? loader
+                                    : icon
+                                }
+                                width={28}
+                                height={28}
+                                alt="Wallet icons"
+                              />{" "}
+                            </button>
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -184,14 +197,14 @@ function WalletManager({ isOpen, onCloseModal }) {
                         onClick={onCloseModal}
                         className={style.wallet_dialog_close}
                       >
-                        &times;
+                        <img src={ExitSymbol.src} className="w-6" alt="" />
                       </span>
                     </div>
                   </div>
 
                   <div className={style.wallet_dialog_body}>
                     <div className={style.wallet_dialog_provider}>
-                      <p>Connected to DLC</p>
+                      <p>Connected to DWORM</p>
                       <button
                         onClick={() => {
                           deactivate();
@@ -220,7 +233,7 @@ function WalletManager({ isOpen, onCloseModal }) {
                             />
                             <span>Copy Address</span>
                             {copied ? (
-                              <span className={style.tooltip}>Copied.</span>
+                              <span className={style.tooltip}>Copied</span>
                             ) : null}
                           </p>
                         </CopyToClipboard>
