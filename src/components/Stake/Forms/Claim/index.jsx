@@ -8,6 +8,7 @@ import { useClaimRewards } from "@/hooks/stake/useClaimDivs";
 import { useRouter } from "next/router";
 import WalletManager from "@/components/common/WalletManager";
 import { useEthers } from "@usedapp/core";
+import Spinner from "@/assets/images/spinner.svg";
 
 function ClaimForm() {
   const { account } = useEthers();
@@ -80,6 +81,7 @@ function ClaimForm() {
             className={styles.button}
           >
             {userPendingDivs > 0 ? "Claim" : "Nothing to claim"}
+            {isClaiming && <img src={Spinner.src} className="w-6" />}
           </button>
         )}
         {account != undefined && isChainError && (
