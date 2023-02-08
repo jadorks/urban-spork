@@ -1,4 +1,4 @@
-import { Localhost, Mainnet, useCall } from "@usedapp/core";
+import { Mainnet, useCall } from "@usedapp/core";
 import { useStakeContract } from "../useContract";
 
 export const useDepositedTokens = (userAddress) => {
@@ -11,7 +11,7 @@ export const useDepositedTokens = (userAddress) => {
         method: "depositedDworm",
         args: [userAddress],
       },
-      { refresh: "everyBlock", chainId: Localhost.chainId }
+      { refresh: "everyBlock", chainId: Mainnet.chainId }
     ) ?? {};
 
   if (error) {

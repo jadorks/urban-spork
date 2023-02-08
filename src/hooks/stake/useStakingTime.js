@@ -1,4 +1,4 @@
-import { Localhost, Mainnet, useCall } from "@usedapp/core";
+import { Mainnet, useCall } from "@usedapp/core";
 import { useStakeContract } from "../useContract";
 
 export const useStakingTime = (userAddress) => {
@@ -11,7 +11,7 @@ export const useStakingTime = (userAddress) => {
         method: "stakingTime",
         args: [userAddress],
       },
-      { refresh: 10, chainId: Localhost.chainId }
+      { refresh: 10, chainId: Mainnet.chainId }
     ) ?? {};
 
   if (error) {

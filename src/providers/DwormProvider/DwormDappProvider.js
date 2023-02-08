@@ -4,7 +4,7 @@ import { useStakingTime } from "@/hooks/stake/useStakingTime";
 import { useTotalStakedTokens } from "@/hooks/stake/useTotalStakedTokens";
 import { useDwormEthContract, useEthUSDTContract } from "@/hooks/useContract";
 import { usePrice } from "@/hooks/usePrice";
-import { useEthers, useUpdateConfig, ChainId, Localhost, Mainnet } from "@usedapp/core";
+import { useEthers, useUpdateConfig, ChainId, Mainnet } from "@usedapp/core";
 import React, { useState, useEffect } from "react";
 import DwormDappContext from "./context";
 
@@ -31,52 +31,52 @@ function DwormDappProvider({ children }) {
     });
   }, [usdtValue]);
 
-  // useEffect(() => {
-  //   try {
-  //     if (account != undefined && library != undefined) {
-  //       updateConfig({ readOnlyUrls: { [ChainId.Mainnet]: library } });
-  //     } else {
-  //       updateConfig({
-  //         readOnlyUrls: {
-  //           [ChainId.Mainnet]: process.env.NEXT_PUBLIC_MAINNET_RPC_URL,
-  //         },
-  //       });
-  //     }
-  //   } catch (e) {
-  //     console.error("Provider switch failed. Going back to alchemy: ", e);
-  //     updateConfig({
-  //       readOnlyUrls: {
-  //         [ChainId.Mainnet]: process.env.NEXT_PUBLIC_MAINNET_RPC_URL,
-  //       },
-  //     });
-  //   }
-  // }, [account]);
+  useEffect(() => {
+    try {
+      if (account != undefined && library != undefined) {
+        updateConfig({ readOnlyUrls: { [ChainId.Mainnet]: library } });
+      } else {
+        updateConfig({
+          readOnlyUrls: {
+            [ChainId.Mainnet]: process.env.NEXT_PUBLIC_MAINNET_RPC_URL,
+          },
+        });
+      }
+    } catch (e) {
+      console.error("Provider switch failed. Going back to alchemy: ", e);
+      updateConfig({
+        readOnlyUrls: {
+          [ChainId.Mainnet]: process.env.NEXT_PUBLIC_MAINNET_RPC_URL,
+        },
+      });
+    }
+  }, [account]);
 
-  // useEffect(() => {
-  //   if (account != undefined && chainId != undefined) {
-  //     if (chainId != Mainnet.chainId) {
-  //       setIsChainError(true);
-  //       updateConfig({
-  //         readOnlyUrls: {
-  //           [ChainId.Mainnet]: process.env.NEXT_PUBLIC_MAINNET_RPC_URL,
-  //         },
-  //       });
-  //     } else {
-  //       setIsChainError(false);
-  //       updateConfig({
-  //         readOnlyUrls: {
-  //           [ChainId.Mainnet]: library,
-  //         },
-  //       });
-  //     }
-  //   }
-  // }, [account, chainId]);
+  useEffect(() => {
+    if (account != undefined && chainId != undefined) {
+      if (chainId != Mainnet.chainId) {
+        setIsChainError(true);
+        updateConfig({
+          readOnlyUrls: {
+            [ChainId.Mainnet]: process.env.NEXT_PUBLIC_MAINNET_RPC_URL,
+          },
+        });
+      } else {
+        setIsChainError(false);
+        updateConfig({
+          readOnlyUrls: {
+            [ChainId.Mainnet]: library,
+          },
+        });
+      }
+    }
+  }, [account, chainId]);
 
-  // useEffect(() => {
-  //   if (isChainError && account === undefined) {
-  //     setIsChainError(false);
-  //   }
-  // }, [isChainError, account]);
+  useEffect(() => {
+    if (isChainError && account === undefined) {
+      setIsChainError(false);
+    }
+  }, [isChainError, account]);
 
   return (
     <DwormDappContext.Provider

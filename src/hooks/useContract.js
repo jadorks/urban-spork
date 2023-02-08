@@ -1,6 +1,6 @@
 import { utils } from "ethers";
 import { Contract } from "@ethersproject/contracts";
-import { Localhost, Mainnet } from "@usedapp/core";
+import { Mainnet } from "@usedapp/core";
 import STAKE_ABI from "@/contracts/DwormStakingV1.json";
 import ERC20 from "@/contracts/IERC20.json";
 import UNI_V2 from "@/contracts/UniswapV2.json";
@@ -13,14 +13,14 @@ import {
 
 export function useTokenContract() {
   return new Contract(
-    TOKEN_ADDRESS[Localhost.chainId],
+    TOKEN_ADDRESS[Mainnet.chainId],
     new utils.Interface(ERC20)
   );
 }
 
 export function useStakeContract() {
   return new Contract(
-    STAKE_ADDRESS[Localhost.chainId],
+    STAKE_ADDRESS[Mainnet.chainId],
     new utils.Interface(STAKE_ABI)
   );
 }

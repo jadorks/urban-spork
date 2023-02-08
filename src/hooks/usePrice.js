@@ -1,4 +1,4 @@
-import { Localhost, Mainnet, useCall } from "@usedapp/core";
+import { Mainnet, useCall } from "@usedapp/core";
 
 export const usePrice = (pairContract, invert, pairDecimals) => {
   const { value, error } =

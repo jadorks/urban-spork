@@ -1,7 +1,7 @@
 import styles from "../forms.module.css";
 import DWORMLogo from "@/assets/images/currency.svg";
 import DisclaimerIcon from "@/assets/icons/disclaimer.svg";
-import { Localhost, useEthers, useTokenBalance } from "@usedapp/core";
+import { Mainnet, useEthers, useTokenBalance } from "@usedapp/core";
 import { TOKEN_ADDRESS } from "@/constants/address";
 import {
   compareNonTokenWithToken,
@@ -22,9 +22,7 @@ import { useDwormDapp } from "@/providers/DwormProvider/DwormDappProvider";
 export default function StakeForm() {
   const { account } = useEthers();
   const contract = useStakeContract();
-  const balance = useTokenBalance(TOKEN_ADDRESS[Localhost.chainId], account, {
-    chainId: Localhost.chainId,
-  });
+  const balance = useTokenBalance(TOKEN_ADDRESS[Mainnet.chainId], account);
   const [amount, setAmount] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isApproved, setIsApproved] = useState(false);
@@ -115,7 +113,7 @@ export default function StakeForm() {
 
   useEffect(() => {
     if (account) {
-      if (amount <= 0) {
+      if (amount <= 0 || amount.toString().length <= 0) {
         setErrorMessage("Enter an Amount");
       } else if (
         balance != undefined &&

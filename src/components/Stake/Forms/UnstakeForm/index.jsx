@@ -74,7 +74,7 @@ function UnstakeForm() {
 
   useEffect(() => {
     if (account) {
-      if (amount <= 0) {
+      if (amount <= 0 || amount.toString().length <= 0) {
         setErrorMessage("Enter an Amount");
       } else if (
         userDepositedTokens != undefined &&

@@ -1,4 +1,4 @@
-import { Localhost, Mainnet, useCall } from "@usedapp/core";
+import { Mainnet, useCall } from "@usedapp/core";
 import { useStakeContract } from "../useContract";
 
 export const usePendingDivs = (userAddress) => {
@@ -11,7 +11,7 @@ export const usePendingDivs = (userAddress) => {
         method: "getPendingDivs",
         args: [userAddress],
       },
-      { refresh: 10, chainId: Localhost.chainId }
+      { refresh: 10, chainId: Mainnet.chainId }
     ) ?? {};
 
   if (error) {
