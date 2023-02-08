@@ -157,7 +157,7 @@ export default function StakeForm() {
         </div>
         <div className={styles.disclaimer}>
           <img src={DisclaimerIcon.src} alt="" />
-          <p>Stake your DWORM to earn rewards</p>
+          <p>Stake your DWORM to earn rewards (333.0% APY).</p>
         </div>
         {account != undefined &&
           !isChainError &&

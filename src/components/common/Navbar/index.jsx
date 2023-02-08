@@ -8,12 +8,10 @@ import WalletManager from "../WalletManager";
 import Link from "next/link";
 import Button from "../Button";
 import { useRouter } from "next/router";
-// import { useDLCDapp } from "@/providers/DLCProvider/DLCDappProvider";
 
 export default function Navbar() {
   const { account } = useEthers();
   const router = useRouter();
-  // const { isChainError } = useDLCDapp();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   function closeModal() {
@@ -28,13 +26,21 @@ export default function Navbar() {
     <div className={styles.container}>
       <div className={styles.content}>
         <div className={styles.nav__left}>
-          <img className="w-32" src={DWORMLogo.src} alt="logo" />
+          <a
+            href="https://d-worm.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img className="w-32" src={DWORMLogo.src} alt="logo" />
+          </a>
         </div>
         <div className={styles.nav__links}>
           <Link
             href={"/stake"}
             className={
-              router.pathname == "/stake" ? "border-b-2 border-[#F762DA]" : undefined
+              router.pathname == "/stake"
+                ? "border-b-2 border-[#F762DA]"
+                : undefined
             }
           >
             Stake
@@ -90,11 +96,6 @@ export default function Navbar() {
           )}
         </Popover>
       </div>
-      {false && (
-        <div className="bg-red-600 text-center text-white p-1 alien-19">
-          You're connected to the wrong network. Switch to Ethereum Mainnet.
-        </div>
-      )}
       <WalletManager isOpen={isDialogOpen} onCloseModal={closeModal} />
     </div>
   );
