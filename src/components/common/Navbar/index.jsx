@@ -7,10 +7,12 @@ import { shortenIfAddress, useEthers } from "@usedapp/core";
 import WalletManager from "../WalletManager";
 import Link from "next/link";
 import Button from "../Button";
+import { useRouter } from "next/router";
 // import { useDLCDapp } from "@/providers/DLCProvider/DLCDappProvider";
 
 export default function Navbar() {
   const { account } = useEthers();
+  const router = useRouter();
   // const { isChainError } = useDLCDapp();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -29,9 +31,16 @@ export default function Navbar() {
           <img className="w-32" src={DWORMLogo.src} alt="logo" />
         </div>
         <div className={styles.nav__links}>
-          <Link href={"/stake"}>Stake</Link>
-          <Link href={"/stake"}>Farms</Link>
-          <Link href={"/stake"}>Dewormer</Link>
+          <Link
+            href={"/stake"}
+            className={
+              router.pathname == "/stake" ? "border-b-2 border-[#F762DA]" : undefined
+            }
+          >
+            Stake
+          </Link>
+          <div className="text-gray-600 cursor-default">Farms</div>
+          <div className="text-gray-600 cursor-default">Dewormer</div>
         </div>
         <div className={styles.nav__right}>
           <Button
@@ -62,8 +71,10 @@ export default function Navbar() {
                   <div className="relative grid gap-4 bg-[#38137f] p-4">
                     <div className="flex freude-18 text-white items-center flex-col gap-4">
                       <Link href={"/stake"}>Stake</Link>
-                      <Link href={"/stake"}>Farms</Link>
-                      <Link href={"/stake"}>Dewormer</Link>
+                      <div className="text-gray-600 cursor-default">Farms</div>
+                      <div className="text-gray-600 cursor-default">
+                        Dewormer
+                      </div>
                       <Button
                         onClick={openModal}
                         buttonAs="button"

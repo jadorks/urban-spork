@@ -7,7 +7,7 @@
 }
 
 .nav__links {
-  @apply hidden lg:flex justify-between  items-center;
+  @apply hidden lg:flex justify-center space-x-8  items-center;
   @apply freude-22 text-white;
 }
 

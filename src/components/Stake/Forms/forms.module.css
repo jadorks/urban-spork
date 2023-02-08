@@ -35,6 +35,10 @@
 }
 
 .button {
-  @apply py-2 freude-22 rounded-2xl;
+  @apply flex gap-2 justify-center py-2 freude-22 rounded-2xl;
   @apply bg-[#38137F] border-[2px] border-[#F762DA];
+}
+
+.button[disabled] {
+  @apply opacity-60;
 }
